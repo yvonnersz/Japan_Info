@@ -7,13 +7,8 @@ module JapanInfo
 
     def main_menu
       JapanInfo::Japan.load
+      JapanInfo::Japan.reader_interests
       puts "Greeting! Welcome to JapanInfo. What are you interested in?"
-
-      puts "1. Hiking"
-      puts "2. Onsen"
-      puts "3. Exit"
-      puts "Please enter number."
-
       choice = gets.strip
       case choice
       when 1

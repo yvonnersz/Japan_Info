@@ -14,18 +14,28 @@ require 'pry'
 module JapanInfo
   class Japan
 
-    def self.load
-      doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e623.html"))
-      text = doc.css("div.interests_top_page__category_title").text
-      binding.array
-      interests_array = text.collect do |interest|
-                          interest.text
-                        end
-      interests_array.each do |interest|
-        puts "#{[i]}. interests_array[0]"
-      end
+    def initialize(interests)
+      @interests = interests
+      @interests = []
     end
 
+    def self.load
+      doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e623.html"))
+      text = doc.css("div.interests_top_page__category_title")
+
+      new_text = text.collect do |interest|
+        interest.text
+      end
+
+      @interests = new_text
+
+    end
+
+    def self.reader_interests
+      @interests.each do |interest|
+        puts "number. #{interest}"
+      end
+    end
 
   end
 end
