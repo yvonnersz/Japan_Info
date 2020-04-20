@@ -1,7 +1,7 @@
 module JapanInfo
   class Scraper
 
-    def call
+    def self.call
       puts "myb"
     end
 

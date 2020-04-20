@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
     spec.metadata["homepage_uri"] = "https://github.com/yvonnersz/japan-info.git"
-    spec.metadata["source_code_uri"] = "https://github.com/yvonnersz/japan-info.git"
-    spec.metadata["changelog_uri"] = "https://github.com/yvonnersz/japan-info.git"
+    spec.metadata["source_code_uri"] = "https://github.com/yvonnersz"
+    spec.metadata["changelog_uri"] = "https://github.com/yvonnersz/changelog.md"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
@@ -38,4 +38,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_runtime_dependency 'nokogiri'
+  spec.add_runtime_dependency 'pry'
+
+
 end
