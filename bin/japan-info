@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 require "bundler/setup"
-require "Japan_Info"
+require "japan-info"
 
 JapanInfo::CLI.new.call

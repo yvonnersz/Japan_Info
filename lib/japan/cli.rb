@@ -2,7 +2,7 @@ module JapanInfo
   class CLI
 
     def call
-      puts "hi"
+      puts "hello, finally got this to wokr?"
     end
 
   end
