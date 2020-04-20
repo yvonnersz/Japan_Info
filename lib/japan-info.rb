@@ -13,16 +13,17 @@ require 'pry'
 
 module JapanInfo
   class Japan
-    @@interests = []
 
     def self.load
       doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e623.html"))
       text = doc.css("div.interests_top_page__category_title").text
-      text.each do |interest|
-        @@interests << interest
+      binding.array
+      interests_array = text.collect do |interest|
+                          interest.text
+                        end
+      interests_array.each do |interest|
+        puts "#{[i]}. interests_array[0]"
       end
-      binding.pry
-
     end
 
 
