@@ -6,6 +6,7 @@ module JapanInfo
     end
 
     def main_menu
+      JapanInfo::Japan.load
       puts "Greeting! Welcome to JapanInfo. What are you interested in?"
 
       puts "1. Hiking"

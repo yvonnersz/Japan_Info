@@ -1,8 +1,8 @@
 module JapanInfo
   class Scraper
 
-    def self.call
-      puts "myb"
+    def self.load_data
+      p
     end
 
   end
