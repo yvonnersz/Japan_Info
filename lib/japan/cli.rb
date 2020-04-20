@@ -5,10 +5,16 @@ module JapanInfo
       main_menu
     end
 
+
     def main_menu
       JapanInfo::Japan.load
+      puts "Greetings! Welcome to JapanInfo."
+      puts " "
+      sleep 1.0
       JapanInfo::Japan.reader_interests
-      puts "Greeting! Welcome to JapanInfo. What are you interested in?"
+      puts " "
+      puts "Please input the number you are interested in."
+
       choice = gets.strip
       case choice
       when 1

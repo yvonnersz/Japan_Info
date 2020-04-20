@@ -32,8 +32,10 @@ module JapanInfo
     end
 
     def self.reader_interests
+      counter = 1
       @interests.each do |interest|
-        puts "number. #{interest}"
+        puts "#{counter}. #{interest}"
+        counter +=1
       end
     end
 
