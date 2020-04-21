@@ -73,6 +73,17 @@ module JapanInfo
     JapanInfo::Japan.kanto_spots
     puts "You chose this. Which onsen would you like more info on?"
     JapanInfo::Japan.kanto_spots_reader
+    choice = gets.strip
+    case choice
+    when "1"
+      saino
+    end
+  end
+
+  def saino
+    JapanInfo::Japan.kanto_spots_info
+    puts "You chose saino."
+    JapanInfo::Japan.kanto_spots_info_reader
   end
 
 end

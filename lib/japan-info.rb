@@ -113,6 +113,15 @@ module JapanInfo
         end
       end
 
+      def self.kanto_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7402.html"))
+        kanto_spots_info = doc.css("span.spot_meta__content")
+
+        @kanto_spots_info_array = kanto_spots_info.collect do |kanto_spot_info|
+          kanto_spot_info.text
+        end
+      end
+
       def self.kanto_spots_reader
         counter = 1
           @kanto_spots_array.each do |spot|
@@ -121,9 +130,12 @@ module JapanInfo
         end
       end
 
+      def self.kanto_spots_info_reader
+        puts "#{@kanto_spots_info_array[0]}"
+      end
 
-    end
 
 
+end
   end
 end
