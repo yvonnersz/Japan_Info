@@ -82,5 +82,58 @@ module JapanInfo
 
 
 
+
+
+
+      def self.manza_spots
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7495.html"))
+        manza_spots = doc.css(".spot_list__spot__name")
+        @manza_spots_array = manza_spots.collect do |manza_spot|
+          manza_spot.text
+        end
+      end
+
+      def self.manza_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7495.html"))
+        manza_spots_info = doc.css("span.spot_meta__content")
+        @manza_spots_info_array = manza_spots_info.collect do |manza_spot_info|
+          manza_spot_info.text
+        end
+      end
+
+      def self.manza_spots_reader
+        counter = 1
+          @manza_spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.manza_spots_info_reader
+        puts "#{@manza_spots_info_array[0]}"
+      end
+
+      def self.manza_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7495.html"))
+        @manza_info = doc.css(".page_section__body p[2]").text
+      end
+
+      def self.manza_info_reader
+        puts "#{@manza_info}"
+      end
+
+      def self.manza_nearby_schedule
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7495.html"))
+        manza_schedule = doc.css(".spot_meta__text_wrap")
+        @manza_schedule_array = manza_schedule.collect do |spot|
+          spot.text
+        end
+      end
+
+      def self.manza_nearby_schedule_reader(index)
+        puts "#{@manza_schedule_array[index]}"
+      end
+
+
 end
   end

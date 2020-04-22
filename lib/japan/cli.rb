@@ -21,6 +21,7 @@ module JapanInfo
     when "1"
       kusatsu
     when "2"
+      manza
     when "3"
     when "4"
     when "5"
@@ -66,6 +67,45 @@ module JapanInfo
     when "6"
       JapanInfo::Japan.kusatsu_nearby_schedule
       JapanInfo::Japan.kusatsu_nearby_schedule_reader(5)
+    end
+  end
+
+
+
+
+  def manza
+    puts ""
+    puts "You chose 2."
+    puts ""
+    sleep 2
+    JapanInfo::Japan.manza_info
+    JapanInfo::Japan.manza_info_reader
+    puts ""
+    puts "Would you like to explore nearby community bath houses?"
+    JapanInfo::Japan.manza_spots
+    JapanInfo::Japan.manza_spots_reader
+
+    choice = gets.strip
+    case choice
+    when "1"
+      puts "You chose 1."
+      JapanInfo::Japan.manza_nearby_schedule
+      JapanInfo::Japan.manza_nearby_schedule_reader(0)
+    when "2"
+      JapanInfo::Japan.manza_nearby_schedule
+      JapanInfo::Japan.manza_nearby_schedule_reader(1)
+    when "3"
+      JapanInfo::Japan.manza_nearby_schedule
+      JapanInfo::Japan.manza_nearby_schedule_reader(2)
+    when "4"
+      JapanInfo::Japan.manza_nearby_schedule
+      JapanInfo::Japan.manza_nearby_schedule_reader(3)
+    when "5"
+      JapanInfo::Japan.manza_nearby_schedule
+      JapanInfo::Japan.manza_nearby_schedule_reader(4)
+    when "6"
+      JapanInfo::Japan.manza_nearby_schedule
+      JapanInfo::Japan.manza_nearby_schedule_reader(5)
     end
   end
 
