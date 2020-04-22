@@ -507,7 +507,6 @@ module JapanInfo
         shiobara_schedule.collect do |spot|
           @shiobara_schedule_array << spot.text
         end
-        binding.pry
       end
 
       def self.shiobara_nearby_schedule_reader(index)
@@ -515,6 +514,65 @@ module JapanInfo
           puts "Sorry, there is no additional info available."
         else
           puts "#{@shiobara_schedule_array[index]}"
+        end
+      end
+
+
+
+
+
+
+      def self.shima_spots
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7435.html"))
+        shima_spots = doc.css(".spot_list__spot__name")
+        @shima_spots_array = shima_spots.collect do |shima_spot|
+          shima_spot.text
+        end
+      end
+
+      def self.shima_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7435.html"))
+        shima_spots_info = doc.css("span.spot_meta__content")
+        @shima_spots_info_array = shima_spots_info.collect do |shima_spot_info|
+          shima_spot_info.text
+        end
+      end
+
+      def self.shima_spots_reader
+        counter = 1
+          @shima_spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.shima_spots_info_reader
+        puts "#{@shima_spots_info_array[0]}"
+      end
+
+      def self.shima_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7435.html"))
+        @shima_info = doc.css(".page_section__body p[2]").text
+      end
+
+      def self.shima_info_reader
+        puts "#{@shima_info}"
+      end
+
+      def self.shima_nearby_schedule
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7435.html"))
+        shima_schedule = doc.css("span.spot_meta__content")
+        @shima_schedule_array = []
+        shima_schedule.collect do |spot|
+          @shima_schedule_array << spot.text
+        end
+      end
+
+      def self.shima_nearby_schedule_reader(index)
+        if @shima_schedule_array == [] || @shima_schedule_array == ""
+          puts "Sorry, there is no additional info available."
+        else
+          puts "#{@shima_schedule_array[index]}"
         end
       end
 

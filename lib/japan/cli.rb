@@ -37,6 +37,7 @@ module JapanInfo
     when "9"
       shiobara
     when "10"
+      shima
     end
 
   end
@@ -393,6 +394,94 @@ def shiobara
   end
 end
 
+
+
+
+
+def shima
+  puts ""
+  puts "You chose 10."
+  puts ""
+  sleep 2
+  JapanInfo::Japan.shima_info
+  JapanInfo::Japan.shima_info_reader
+  puts ""
+  puts "Would you like to explore nearby community bath houses?"
+  JapanInfo::Japan.shima_spots
+  JapanInfo::Japan.shima_spots_reader
+
+  choice = gets.strip
+  case choice
+  when "1"
+    puts "You chose 1."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(0)
+  when "2"
+    puts "You chose 2."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(1)
+  when "3"
+    puts "You chose 3."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(2)
+  when "4"
+    puts "You chose 4."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(3)
+  when "5"
+    puts "You chose 5."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(4)
+  when "6"
+    puts "You chose 6."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(5)
+  when "7"
+    puts "You chose 7."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(6)
+  when "8"
+    puts "You chose 8."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(7)
+  when "9"
+    puts "You chose 9."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(8)
+  when "10"
+    puts "You chose 10."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(9)
+  when "9"
+    puts "You chose 11."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(11)
+  when "10"
+    puts "You chose 12."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(12)
+  when "9"
+    puts "You chose 13."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(13)
+  when "10"
+    puts "You chose 14."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(14)
+  when "9"
+    puts "You chose 15."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(15)
+  when "10"
+    puts "You chose 16."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(16)
+  when "9"
+    puts "You chose 17."
+    JapanInfo::Japan.shima_nearby_schedule
+    JapanInfo::Japan.shima_nearby_schedule_reader(17)
+  end
+end
 
 end
 end
