@@ -19,24 +19,34 @@ module JapanInfo
     choice = gets.strip
     case choice
     when "1"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.kusatsu_page)
     when "2"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.manza_page)
     when "3"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.hakone_page)
     when "4"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.minakami_page)
     when "5"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.nasu_page)
     when "6"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.nikko_page)
     when "7"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.ikaho_page)
     when "8"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.kinugawa_page)
     when "9"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.shiobara_page)
     when "10"
+      puts "You chose #{choice}."
       pick(JapanInfo::Scraper.shima_page)
     end
   end
@@ -44,7 +54,6 @@ module JapanInfo
 
   def pick(scraper_webpage)
     puts ""
-    puts "You chose 2."
     puts ""
     sleep 2
     JapanInfo::Japan.info(scraper_webpage)
