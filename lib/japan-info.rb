@@ -405,5 +405,121 @@ module JapanInfo
 
 
 
+      def self.kinugawa_spots
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3877.html"))
+        kinugawa_spots = doc.css(".spot_list__spot__name")
+        @kinugawa_spots_array = kinugawa_spots.collect do |kinugawa_spot|
+          kinugawa_spot.text
+        end
+      end
+
+      def self.kinugawa_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3877.html"))
+        kinugawa_spots_info = doc.css("span.spot_meta__content")
+        @kinugawa_spots_info_array = kinugawa_spots_info.collect do |kinugawa_spot_info|
+          kinugawa_spot_info.text
+        end
+      end
+
+      def self.kinugawa_spots_reader
+        counter = 1
+          @kinugawa_spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.kinugawa_spots_info_reader
+        puts "#{@kinugawa_spots_info_array[0]}"
+      end
+
+      def self.kinugawa_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3877.html"))
+        @kinugawa_info = doc.css(".page_section__body p[2]").text
+      end
+
+      def self.kinugawa_info_reader
+        puts "#{@kinugawa_info}"
+      end
+
+      def self.kinugawa_nearby_schedule
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3877.html"))
+        kinugawa_schedule = doc.css(".spot_meta__text_wrap")
+        @kinugawa_schedule_array = kinugawa_schedule.collect do |spot|
+          spot.text
+        end
+      end
+
+      def self.kinugawa_nearby_schedule_reader(index)
+        if @kinugawa_schedule_array == []
+          puts "Sorry, there is no additional info available."
+        else
+          puts "#{@kinugawa_schedule_array[index]}"
+        end
+      end
+
+
+
+
+
+
+      def self.shiobara_spots
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3843.html"))
+        shiobara_spots = doc.css(".spot_list__spot__name")
+        @shiobara_spots_array = shiobara_spots.collect do |shiobara_spot|
+          shiobara_spot.text
+        end
+      end
+
+      def self.shiobara_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3843.html"))
+        shiobara_spots_info = doc.css("span.spot_meta__content")
+        @shiobara_spots_info_array = shiobara_spots_info.collect do |shiobara_spot_info|
+          shiobara_spot_info.text
+        end
+      end
+
+      def self.shiobara_spots_reader
+        counter = 1
+          @shiobara_spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.shiobara_spots_info_reader
+        puts "#{@shiobara_spots_info_array[0]}"
+      end
+
+      def self.shiobara_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3843.html"))
+        @shiobara_info = doc.css(".page_section__body p[2]").text
+      end
+
+      def self.shiobara_info_reader
+        puts "#{@shiobara_info}"
+      end
+
+      def self.shiobara_nearby_schedule
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3843.html"))
+        shiobara_schedule = doc.css("span.spot_meta__content")
+        @shiobara_schedule_array = []
+        shiobara_schedule.collect do |spot|
+          @shiobara_schedule_array << spot.text
+        end
+        binding.pry
+      end
+
+      def self.shiobara_nearby_schedule_reader(index)
+        if @shiobara_schedule_array == [] || @shiobara_schedule_array == ""
+          puts "Sorry, there is no additional info available."
+        else
+          puts "#{@shiobara_schedule_array[index]}"
+        end
+      end
+
+
+
+
 end
-  end
+end

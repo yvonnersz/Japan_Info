@@ -33,7 +33,9 @@ module JapanInfo
     when "7"
       ikaho
     when "8"
+      kinugawa
     when "9"
+      shiobara
     when "10"
     end
 
@@ -302,6 +304,92 @@ def ikaho
     puts "You chose 2."
     JapanInfo::Japan.ikaho_nearby_schedule
     JapanInfo::Japan.ikaho_nearby_schedule_reader(1)
+  end
+end
+
+
+
+def kinugawa
+  puts ""
+  puts "You chose 8."
+  puts ""
+  sleep 2
+  JapanInfo::Japan.kinugawa_info
+  JapanInfo::Japan.kinugawa_info_reader
+  puts ""
+  puts "Would you like to explore nearby community bath houses?"
+  JapanInfo::Japan.kinugawa_spots
+  JapanInfo::Japan.kinugawa_spots_reader
+
+  choice = gets.strip
+  case choice
+  when "1"
+    puts "You chose 1."
+    JapanInfo::Japan.kinugawa_nearby_schedule
+    JapanInfo::Japan.kinugawa_nearby_schedule_reader(0)
+  when "2"
+    puts "You chose 2."
+    JapanInfo::Japan.kinugawa_nearby_schedule
+    JapanInfo::Japan.kinugawa_nearby_schedule_reader(1)
+  end
+end
+
+
+
+def shiobara
+  puts ""
+  puts "You chose 9."
+  puts ""
+  sleep 2
+  JapanInfo::Japan.shiobara_info
+  JapanInfo::Japan.shiobara_info_reader
+  puts ""
+  puts "Would you like to explore nearby community bath houses?"
+  JapanInfo::Japan.shiobara_spots
+  JapanInfo::Japan.shiobara_spots_reader
+
+  choice = gets.strip
+  case choice
+  when "1"
+    puts "You chose 1."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(0)
+  when "2"
+    puts "You chose 2."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(1)
+  when "3"
+    puts "You chose 3."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(2)
+  when "4"
+    puts "You chose 4."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(3)
+  when "5"
+    puts "You chose 5."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(4)
+  when "6"
+    puts "You chose 6."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(5)
+  when "7"
+    puts "You chose 7."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(6)
+  when "8"
+    puts "You chose 8."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(7)
+  when "9"
+    puts "You chose 9."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(8)
+  when "10"
+    puts "You chose 10."
+    JapanInfo::Japan.shiobara_nearby_schedule
+    JapanInfo::Japan.shiobara_nearby_schedule_reader(9)
   end
 end
 
