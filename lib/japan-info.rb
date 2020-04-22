@@ -135,5 +135,162 @@ module JapanInfo
       end
 
 
+
+
+      def self.hakone_spots
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e5209.html"))
+        hakone_spots = doc.css(".spot_list__spot__name")
+        @hakone_spots_array = hakone_spots.collect do |hakone_spot|
+          hakone_spot.text
+        end
+      end
+
+      def self.hakone_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e5209.html"))
+        hakone_spots_info = doc.css("span.spot_meta__content")
+        @hakone_spots_info_array = hakone_spots_info.collect do |hakone_spot_info|
+          hakone_spot_info.text
+        end
+      end
+
+      def self.hakone_spots_reader
+        counter = 1
+          @hakone_spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.hakone_spots_info_reader
+        puts "#{@hakone_spots_info_array[0]}"
+      end
+
+      def self.hakone_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e5209.html"))
+        @hakone_info = doc.css(".page_section__body p[2]").text
+      end
+
+      def self.hakone_info_reader
+        puts "#{@hakone_info}"
+      end
+
+      def self.hakone_nearby_schedule
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e5209.html"))
+        hakone_schedule = doc.css(".spot_meta__text_wrap")
+        @hakone_schedule_array = hakone_schedule.collect do |spot|
+          spot.text
+        end
+      end
+
+      def self.hakone_nearby_schedule_reader(index)
+        puts "#{@hakone_schedule_array[index]}"
+      end
+
+
+
+
+
+
+      def self.minakami_spots
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7463.html"))
+        minakami_spots = doc.css(".spot_list__spot__name")
+        @minakami_spots_array = minakami_spots.collect do |minakami_spot|
+          minakami_spot.text
+        end
+      end
+
+      def self.minakami_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7463.html"))
+        minakami_spots_info = doc.css("span.spot_meta__content")
+        @minakami_spots_info_array = minakami_spots_info.collect do |minakami_spot_info|
+          minakami_spot_info.text
+        end
+      end
+
+      def self.minakami_spots_reader
+        counter = 1
+          @minakami_spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.minakami_spots_info_reader
+        puts "#{@minakami_spots_info_array[0]}"
+      end
+
+      def self.minakami_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7463.html"))
+        @minakami_info = doc.css(".page_section__body p[2]").text
+      end
+
+      def self.minakami_info_reader
+        puts "#{@minakami_info}"
+      end
+
+      def self.minakami_nearby_schedule
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7463.html"))
+        minakami_schedule = doc.css(".spot_meta__text_wrap")
+        @minakami_schedule_array = minakami_schedule.collect do |spot|
+          spot.text
+        end
+      end
+
+      def self.minakami_nearby_schedule_reader(index)
+        puts "#{@minakami_schedule_array[index]}"
+      end
+
+
+
+      def self.nasu_spots
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3842.html"))
+        nasu_spots = doc.css(".spot_list__spot__name")
+        @nasu_spots_array = nasu_spots.collect do |nasu_spot|
+          nasu_spot.text
+        end
+      end
+
+      def self.nasu_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3842.html"))
+        nasu_spots_info = doc.css("span.spot_meta__content")
+        @nasu_spots_info_array = nasu_spots_info.collect do |nasu_spot_info|
+          nasu_spot_info.text
+        end
+      end
+
+      def self.nasu_spots_reader
+        counter = 1
+          @nasu_spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.nasu_spots_info_reader
+        puts "#{@nasu_spots_info_array[0]}"
+      end
+
+      def self.nasu_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3842.html"))
+        @nasu_info = doc.css(".page_section__body p[2]").text
+      end
+
+      def self.nasu_info_reader
+        puts "#{@nasu_info}"
+      end
+
+      def self.nasu_nearby_schedule
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3842.html"))
+        nasu_schedule = doc.css(".spot_meta__text_wrap")
+        @nasu_schedule_array = nasu_schedule.collect do |spot|
+          spot.text
+        end
+      end
+
+      def self.nasu_nearby_schedule_reader(index)
+        puts "#{@nasu_schedule_array[index]}"
+      end
+
+
 end
   end
