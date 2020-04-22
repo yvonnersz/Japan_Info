@@ -292,5 +292,62 @@ module JapanInfo
       end
 
 
+
+
+      def self.nikko_spots
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3807.html"))
+        nikko_spots = doc.css(".spot_list__spot__name")
+        @nikko_spots_array = nikko_spots.collect do |nikko_spot|
+          nikko_spot.text
+        end
+      end
+
+      def self.nikko_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3807.html"))
+        nikko_spots_info = doc.css("span.spot_meta__content")
+        @nikko_spots_info_array = nikko_spots_info.collect do |nikko_spot_info|
+          nikko_spot_info.text
+        end
+      end
+
+      def self.nikko_spots_reader
+        counter = 1
+          @nikko_spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.nikko_spots_info_reader
+        puts "#{@nikko_spots_info_array[0]}"
+      end
+
+      def self.nikko_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3807.html"))
+        @nikko_info = doc.css(".page_section__body p[2]").text
+      end
+
+      def self.nikko_info_reader
+        puts "#{@nikko_info}"
+      end
+
+      def self.nikko_nearby_schedule
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e3807.html"))
+        nikko_schedule = doc.css(".spot_meta__text_wrap")
+        @nikko_schedule_array = nikko_schedule.collect do |spot|
+          spot.text
+        end
+      end
+
+      def self.nikko_nearby_schedule_reader(index)
+        if @nikko_schedule_array == []
+          puts "Sorry, there is no additional info available."
+        else
+          puts "#{@nikko_schedule_array[index]}"
+        end
+      end
+
+
+
 end
   end

@@ -29,6 +29,7 @@ module JapanInfo
     when "5"
       nasu
     when "6"
+      nikko
     when "7"
     when "8"
     when "9"
@@ -247,6 +248,34 @@ module JapanInfo
     end
 end
 
+def nikko
+  puts ""
+  puts "You chose 6."
+  puts ""
+  sleep 2
+  JapanInfo::Japan.nikko_info
+  JapanInfo::Japan.nikko_info_reader
+  puts ""
+  puts "Would you like to explore nearby community bath houses?"
+  JapanInfo::Japan.nikko_spots
+  JapanInfo::Japan.nikko_spots_reader
+
+  choice = gets.strip
+  case choice
+  when "1"
+    puts "You chose 1."
+    JapanInfo::Japan.nikko_nearby_schedule
+    JapanInfo::Japan.nikko_nearby_schedule_reader(0)
+  when "2"
+    puts "You chose 2."
+    JapanInfo::Japan.nikko_nearby_schedule
+    JapanInfo::Japan.nikko_nearby_schedule_reader(1)
+  when "3"
+    puts "You chose 3."
+    JapanInfo::Japan.nikko_nearby_schedule
+    JapanInfo::Japan.nikko_nearby_schedule_reader(2)
+  end
+end
 
 
 end
