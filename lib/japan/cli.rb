@@ -49,8 +49,7 @@ module JapanInfo
     puts "You chose 1."
     puts ""
     sleep 2
-    JapanInfo::Japan.kusatsu_info
-    JapanInfo::Japan.kusatsu_info_reader
+    JapanInfo::Japan.info(JapanInfo::Scraper.kusatsu_page)
     puts ""
     puts "Would you like to explore nearby community bath houses?"
     JapanInfo::Japan.kanto_spots
@@ -60,8 +59,8 @@ module JapanInfo
     case choice
     when "#{choice}"
       puts "You chose #{choice}."
-      JapanInfo::Japan.kusatsu_nearby_schedule
-      JapanInfo::Japan.kusatsu_nearby_schedule_reader(choice.to_i-1)
+      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.kusatsu_page)
+      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
     end
   end
 
@@ -73,19 +72,18 @@ module JapanInfo
     puts "You chose 2."
     puts ""
     sleep 2
-    JapanInfo::Japan.manza_info
-    JapanInfo::Japan.manza_info_reader
+    JapanInfo::Japan.info(JapanInfo::Scraper.manza_page)
     puts ""
     puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.manza_spots
-    JapanInfo::Japan.manza_spots_reader
+    JapanInfo::Japan.spots(JapanInfo::Scraper.manza_page)
+    JapanInfo::Japan.spots_reader
 
     choice = gets.strip
     case choice
     when "#{choice}"
       puts "You chose #{choice}."
-      JapanInfo::Japan.manza_nearby_schedule
-      JapanInfo::Japan.manza_nearby_schedule_reader(choice.to_i-1)
+      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.manza_page)
+      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
     end
   end
 

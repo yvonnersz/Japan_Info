@@ -14,7 +14,7 @@ module JapanInfo
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e7402.html"))
     end
 
-    def self.manza
+    def self.manza_page
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e7495.html"))
     end
 

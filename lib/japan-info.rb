@@ -63,55 +63,56 @@ module JapanInfo
 
 
 
-      def self.kusatsu_info
-        doc = JapanInfo::Scraper.kusatsu_page
-        @kusatsu_info = doc.css(".page_section__body p[2]").text
+
+
+      def self.info(website)
+        doc = website
+        @info = doc.css(".page_section__body p[2]").text
+        puts "#{@info}"
       end
 
-      def self.kusatsu_info_reader
-        puts "#{@kusatsu_info}"
-      end
-
-      def self.kusatsu_nearby_schedule
-        doc = JapanInfo::Scraper.kusatsu_page
-        kutsatsu_schedule = doc.css(".spot_meta__text_wrap")
-        @kusatsu_schedule_array = kutsatsu_schedule.collect do |spot|
+      def self.nearby_schedule(website)
+        doc = website
+        schedule = doc.css(".spot_meta__text_wrap")
+        @schedule_array = schedule.collect do |spot|
           spot.text
         end
       end
 
-      def self.kusatsu_nearby_schedule_reader(index)
-        puts "#{@kusatsu_schedule_array[index]}"
+      def self.nearby_schedule_reader(index)
+        puts "#{@schedule_array[index]}"
+      end
+
+
+
+
+
+
+      def self.spots(website)
+        doc = website
+        spots = doc.css(".spot_list__spot__name")
+        @spots_array = spots.collect do |spot|
+          spot.text
+        end
+      end
+
+      def self.spots_reader
+        counter = 1
+          @spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.manza_spots_info
+        doc = JapanInfo::Scraper.manza
+        manza_spots_info = doc.css("span.spot_meta__content")
+        @manza_spots_info_array = manza_spots_info.collect do |manza_spot_info|
+          manza_spot_info.text
+        end
       end
       #
-      #
-      #
-      #
-      #
-      #
-      # def self.manza_spots
-      #   doc = JapanInfo::Scraper.manza
-      #   manza_spots = doc.css(".spot_list__spot__name")
-      #   @manza_spots_array = manza_spots.collect do |manza_spot|
-      #     manza_spot.text
-      #   end
-      # end
-      #
-      # def self.manza_spots_info
-      #   doc = JapanInfo::Scraper.manza
-      #   manza_spots_info = doc.css("span.spot_meta__content")
-      #   @manza_spots_info_array = manza_spots_info.collect do |manza_spot_info|
-      #     manza_spot_info.text
-      #   end
-      # end
-      #
-      # def self.manza_spots_reader
-      #   counter = 1
-      #     @manza_spots_array.each do |spot|
-      #       puts "#{counter}. #{spot}"
-      #       counter +=1
-      #   end
-      # end
+
       #
       # def self.manza_spots_info_reader
       #   puts "#{@manza_spots_info_array[0]}"
