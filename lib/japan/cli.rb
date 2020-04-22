@@ -5,86 +5,72 @@ module JapanInfo
       main_menu
     end
 
-
-#     def main_menu
-#       JapanInfo::Japan.load
-#       puts "Greetings! Welcome to JapanInfo."
-#       puts " "
-#       sleep 1.0
-#       JapanInfo::Japan.reader_interests
-#       puts " "
-#       puts "Please input the number you are interested in."
-#
-#       choice = gets.strip
-#       case choice
-#       when "1"
-#         sub_interest
-#       when "2"
-#         onsen
-#       when "3"
-#         puts "Goodbye"
-#         exit
-#       end
-#
-#     end
-#
-#     def sub_interest
-#       JapanInfo::Japan.sub_interest
-#       puts " "
-#       puts "You chose 1. What would you like to see more info on?"
-#       JapanInfo::Japan.subinterests_reader
-#       choice = gets.strip
-#
-#     end
-#
-#     def onsen
-#       puts "you chose onsen"
-#       main_menu
-#     end
-#   end
-# end
-
   def main_menu
-    JapanInfo::Japan.onsen
-    puts "What region are you interested in?"
-    JapanInfo::Japan.onsen_reader
-    choice = gets.strip
-    case choice
-    when "1"
-      first_choice
-    when "2"
-      hokkaido
-    end
-  end
-
-  def first_choice
     JapanInfo::Japan.kanto
-    puts "Which city are you interested in?"
+    puts "Welcome to JapanInfo! I will be your travel guide today."
+    sleep 1
+    puts "Which onsens are you most curious about in the Kanto region (nearby Tokyo)?"
+    puts ""
+    sleep 1
     JapanInfo::Japan.kanto_reader
+    puts ""
+    puts "Please input a number."
+
     choice = gets.strip
     case choice
     when "1"
-      kanto_spots
+      kusatsu
+    when "2"
+    when "3"
+    when "4"
+    when "5"
+    when "6"
+    when "7"
+    when "8"
+    when "9"
+    when "10"
     end
 
   end
 
-  def kanto_spots
+  def kusatsu
+    puts ""
+    puts "You chose 1."
+    puts ""
+    sleep 2
+    JapanInfo::Japan.kusatsu_info
+    JapanInfo::Japan.kusatsu_info_reader
+    puts ""
+    puts "Would you like to explore nearby community bath houses?"
     JapanInfo::Japan.kanto_spots
-    puts "You chose this. Which onsen would you like more info on?"
     JapanInfo::Japan.kanto_spots_reader
+
     choice = gets.strip
     case choice
     when "1"
-      saino
+      puts "You chose 1."
+      JapanInfo::Japan.kusatsu_nearby_schedule
+      JapanInfo::Japan.kusatsu_nearby_schedule_reader(0)
+    when "2"
+      JapanInfo::Japan.kusatsu_nearby_schedule
+      JapanInfo::Japan.kusatsu_nearby_schedule_reader(1)
+    when "3"
+      JapanInfo::Japan.kusatsu_nearby_schedule
+      JapanInfo::Japan.kusatsu_nearby_schedule_reader(2)
+    when "4"
+      JapanInfo::Japan.kusatsu_nearby_schedule
+      JapanInfo::Japan.kusatsu_nearby_schedule_reader(3)
+    when "5"
+      JapanInfo::Japan.kusatsu_nearby_schedule
+      JapanInfo::Japan.kusatsu_nearby_schedule_reader(4)
+    when "6"
+      JapanInfo::Japan.kusatsu_nearby_schedule
+      JapanInfo::Japan.kusatsu_nearby_schedule_reader(5)
     end
   end
 
-  def saino
-    JapanInfo::Japan.kanto_spots_info
-    puts "You chose saino."
-    JapanInfo::Japan.kanto_spots_info_reader
-  end
+
+
 
 end
 end
