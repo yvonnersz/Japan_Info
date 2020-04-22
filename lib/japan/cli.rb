@@ -31,6 +31,7 @@ module JapanInfo
     when "6"
       nikko
     when "7"
+      ikaho
     when "8"
     when "9"
     when "10"
@@ -274,6 +275,33 @@ def nikko
     puts "You chose 3."
     JapanInfo::Japan.nikko_nearby_schedule
     JapanInfo::Japan.nikko_nearby_schedule_reader(2)
+  end
+end
+
+
+
+def ikaho
+  puts ""
+  puts "You chose 7."
+  puts ""
+  sleep 2
+  JapanInfo::Japan.ikaho_info
+  JapanInfo::Japan.ikaho_info_reader
+  puts ""
+  puts "Would you like to explore nearby community bath houses?"
+  JapanInfo::Japan.ikaho_spots
+  JapanInfo::Japan.ikaho_spots_reader
+
+  choice = gets.strip
+  case choice
+  when "1"
+    puts "You chose 1."
+    JapanInfo::Japan.ikaho_nearby_schedule
+    JapanInfo::Japan.ikaho_nearby_schedule_reader(0)
+  when "2"
+    puts "You chose 2."
+    JapanInfo::Japan.ikaho_nearby_schedule
+    JapanInfo::Japan.ikaho_nearby_schedule_reader(1)
   end
 end
 

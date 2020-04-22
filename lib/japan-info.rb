@@ -349,5 +349,61 @@ module JapanInfo
 
 
 
+      def self.ikaho_spots
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7477.html"))
+        ikaho_spots = doc.css(".spot_list__spot__name")
+        @ikaho_spots_array = ikaho_spots.collect do |ikaho_spot|
+          ikaho_spot.text
+        end
+      end
+
+      def self.ikaho_spots_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7477.html"))
+        ikaho_spots_info = doc.css("span.spot_meta__content")
+        @ikaho_spots_info_array = ikaho_spots_info.collect do |ikaho_spot_info|
+          ikaho_spot_info.text
+        end
+      end
+
+      def self.ikaho_spots_reader
+        counter = 1
+          @ikaho_spots_array.each do |spot|
+            puts "#{counter}. #{spot}"
+            counter +=1
+        end
+      end
+
+      def self.ikaho_spots_info_reader
+        puts "#{@ikaho_spots_info_array[0]}"
+      end
+
+      def self.ikaho_info
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7477.html"))
+        @ikaho_info = doc.css(".page_section__body p[2]").text
+      end
+
+      def self.ikaho_info_reader
+        puts "#{@ikaho_info}"
+      end
+
+      def self.ikaho_nearby_schedule
+        doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e7477.html"))
+        ikaho_schedule = doc.css(".spot_meta__text_wrap")
+        @ikaho_schedule_array = ikaho_schedule.collect do |spot|
+          spot.text
+        end
+      end
+
+      def self.ikaho_nearby_schedule_reader(index)
+        if @ikaho_schedule_array == []
+          puts "Sorry, there is no additional info available."
+        else
+          puts "#{@ikaho_schedule_array[index]}"
+        end
+      end
+
+
+
+
 end
   end
