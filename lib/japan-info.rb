@@ -83,11 +83,6 @@ module JapanInfo
         puts "#{@schedule_array[index]}"
       end
 
-
-
-
-
-
       def self.spots(website)
         doc = website
         spots = doc.css(".spot_list__spot__name")
@@ -104,13 +99,13 @@ module JapanInfo
         end
       end
 
-      def self.manza_spots_info
-        doc = JapanInfo::Scraper.manza
-        manza_spots_info = doc.css("span.spot_meta__content")
-        @manza_spots_info_array = manza_spots_info.collect do |manza_spot_info|
-          manza_spot_info.text
-        end
-      end
+      # def self.spots_info(website)
+      #   doc = website
+      #   spots_info = doc.css("span.spot_meta__content")
+      #   @spots_info_array = spots_info.collect do |spot_info|
+      #     manza_spot_info.text
+      #   end
+      # end
       #
 
       #

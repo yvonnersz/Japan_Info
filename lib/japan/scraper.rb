@@ -18,35 +18,35 @@ module JapanInfo
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e7495.html"))
     end
 
-    def self.hakone
+    def self.hakone_page
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e5209.html"))
     end
 
-    def self.minakami
+    def self.minakami_page
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e7463.html"))
     end
 
-    def self.nasu
+    def self.nasu_page
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e3842.html"))
     end
 
-    def self.nikko
+    def self.nikko_page
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e3807.html"))
     end
 
-    def self.ikaho
+    def self.ikaho_page
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e7477.html"))
     end
 
-    def self.kinugawa
+    def self.kinugawa_page
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e3877.html"))
     end
 
-    def self.shiobara
+    def self.shiobara_page
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e3843.html"))
     end
 
-    def self.shima
+    def self.shima_page
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e7435.html"))
     end
 
