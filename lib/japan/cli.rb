@@ -19,254 +19,45 @@ module JapanInfo
     choice = gets.strip
     case choice
     when "1"
-      kusatsu
+      pick(JapanInfo::Scraper.kusatsu_page)
     when "2"
-      manza
+      pick(JapanInfo::Scraper.manza_page)
     when "3"
-      hakone
+      pick(JapanInfo::Scraper.hakone_page)
     when "4"
-      minakami
+      pick(JapanInfo::Scraper.minakami_page)
     when "5"
-      nasu
+      pick(JapanInfo::Scraper.nasu_page)
     when "6"
-      nikko
+      pick(JapanInfo::Scraper.nikko_page)
     when "7"
-      ikaho
+      pick(JapanInfo::Scraper.ikaho_page)
     when "8"
-      kinugawa
+      pick(JapanInfo::Scraper.kinugawa_page)
     when "9"
-      shiobara
+      pick(JapanInfo::Scraper.shiobara_page)
     when "10"
-      shima
+      pick(JapanInfo::Scraper.shima_page)
     end
   end
 
 
-
-
-  def kusatsu
-    puts ""
-    puts "You chose 1."
-    puts ""
-    sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.kusatsu_page)
-    puts ""
-    puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.kanto_spots
-    JapanInfo::Japan.kanto_spots_reader
-
-    choice = gets.strip
-    case choice
-    when "#{choice}"
-      puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.kusatsu_page)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
-    end
-  end
-
-
-
-
-  def manza
+  def pick(scraper_webpage)
     puts ""
     puts "You chose 2."
     puts ""
     sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.manza_page)
+    JapanInfo::Japan.info(scraper_webpage)
     puts ""
     puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.spots(JapanInfo::Scraper.manza_page)
+    JapanInfo::Japan.spots(scraper_webpage)
     JapanInfo::Japan.spots_reader
 
     choice = gets.strip
     case choice
     when "#{choice}"
       puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.manza_page)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
-    end
-  end
-
-
-
-
-  def hakone
-    puts ""
-    puts "You chose 3."
-    puts ""
-    sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.hakone_page)
-    puts ""
-    puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.spots(JapanInfo::Scraper.hakone_page)
-    JapanInfo::Japan.spots_reader
-
-    choice = gets.strip
-    case choice
-    when "#{choice}"
-      puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.hakone_page)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
-    end
-  end
-
-
-
-
-
-  def minakami
-    puts ""
-    puts "You chose 4."
-    puts ""
-    sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.minakami_page)
-    puts ""
-    puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.spots(JapanInfo::Scraper.minakami_page)
-    JapanInfo::Japan.spots_reader
-
-    choice = gets.strip
-    case choice
-    when "#{choice}"
-      puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.minakami_page)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
-    end
-  end
-
-
-
-
-
-  def nasu
-    puts ""
-    puts "You chose 5."
-    puts ""
-    sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.nasu_page)
-    puts ""
-    puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.spots(JapanInfo::Scraper.nasu_page)
-    JapanInfo::Japan.spots_reader
-
-    choice = gets.strip
-    case choice
-    when "#{choice}"
-      puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.nasu_page)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
-    end
-  end
-
-
-
-
-  def nikko
-    puts ""
-    puts "You chose 6."
-    puts ""
-    sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.nikko_page)
-    puts ""
-    puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.spots(JapanInfo::Scraper.nikko_page)
-    JapanInfo::Japan.spots_reader
-
-    choice = gets.strip
-    case choice
-    when "#{choice}"
-      puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.nikko_page)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
-    end
-  end
-
-
-
-  def ikaho
-    puts ""
-    puts "You chose 7."
-    puts ""
-    sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.ikaho_page)
-    puts ""
-    puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.spots(JapanInfo::Scraper.ikaho_page)
-    JapanInfo::Japan.spots_reader
-
-    choice = gets.strip
-    case choice
-    when "#{choice}"
-      puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.ikaho_page)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
-    end
-  end
-
-
-
-  def kinugawa
-    puts ""
-    puts "You chose 8."
-    puts ""
-    sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.kinugawa_page)
-    puts ""
-    puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.spots(JapanInfo::Scraper.kinugawa_page)
-    JapanInfo::Japan.spots_reader
-
-    choice = gets.strip
-    case choice
-    when "#{choice}"
-      puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.kinugawa_page)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
-    end
-  end
-
-
-
-  def shiobara
-    puts ""
-    puts "You chose 9."
-    puts ""
-    sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.shiobara_page)
-    puts ""
-    puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.spots(JapanInfo::Scraper.shiobara_page)
-    JapanInfo::Japan.spots_reader
-
-    choice = gets.strip
-    case choice
-    when "#{choice}"
-      puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.shiobara_page)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
-    end
-  end
-
-
-
-
-
-  def shima
-    puts ""
-    puts "You chose 10."
-    puts ""
-    sleep 2
-    JapanInfo::Japan.info(JapanInfo::Scraper.shima_page)
-    puts ""
-    puts "Would you like to explore nearby community bath houses?"
-    JapanInfo::Japan.spots(JapanInfo::Scraper.shima_page)
-    JapanInfo::Japan.spots_reader
-
-    choice = gets.strip
-    case choice
-    when "#{choice}"
-      puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(JapanInfo::Scraper.shima_page)
+      JapanInfo::Japan.nearby_schedule(scraper_webpage)
       JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
     end
   end
