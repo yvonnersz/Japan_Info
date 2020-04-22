@@ -66,8 +66,8 @@ module JapanInfo
     case choice
     when "#{choice}"
       puts "You chose #{choice}."
-      JapanInfo::Japan.nearby_schedule(scraper_webpage)
-      JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
+      JapanInfo::Japan.nearby_schedule(scraper_webpage,choice.to_i-1)
+      # JapanInfo::Japan.nearby_schedule_reader(choice.to_i-1)
     end
   end
 
