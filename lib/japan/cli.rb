@@ -39,8 +39,10 @@ module JapanInfo
     when "10"
       shima
     end
-
   end
+
+
+
 
   def kusatsu
     puts ""
@@ -56,26 +58,27 @@ module JapanInfo
 
     choice = gets.strip
     case choice
-    when "1"
-      puts "You chose 1."
+    when "#{choice}"
+      puts "You chose #{choice}."
       JapanInfo::Japan.kusatsu_nearby_schedule
-      JapanInfo::Japan.kusatsu_nearby_schedule_reader(0)
-    when "2"
-      JapanInfo::Japan.kusatsu_nearby_schedule
-      JapanInfo::Japan.kusatsu_nearby_schedule_reader(1)
-    when "3"
-      JapanInfo::Japan.kusatsu_nearby_schedule
-      JapanInfo::Japan.kusatsu_nearby_schedule_reader(2)
-    when "4"
-      JapanInfo::Japan.kusatsu_nearby_schedule
-      JapanInfo::Japan.kusatsu_nearby_schedule_reader(3)
-    when "5"
-      JapanInfo::Japan.kusatsu_nearby_schedule
-      JapanInfo::Japan.kusatsu_nearby_schedule_reader(4)
-    when "6"
-      JapanInfo::Japan.kusatsu_nearby_schedule
-      JapanInfo::Japan.kusatsu_nearby_schedule_reader(5)
-    end
+      JapanInfo::Japan.kusatsu_nearby_schedule_reader(choice.to_i-1)
+    # when "2"
+    #   JapanInfo::Japan.kusatsu_nearby_schedule
+    #   JapanInfo::Japan.kusatsu_nearby_schedule_reader(1)
+    # when "3"
+    #   JapanInfo::Japan.kusatsu_nearby_schedule
+    #   JapanInfo::Japan.kusatsu_nearby_schedule_reader(2)
+    # when "4"
+    #   JapanInfo::Japan.kusatsu_nearby_schedule
+    #   JapanInfo::Japan.kusatsu_nearby_schedule_reader(3)
+    # when "5"
+    #   JapanInfo::Japan.kusatsu_nearby_schedule
+    #   JapanInfo::Japan.kusatsu_nearby_schedule_reader(4)
+    # when "6"
+    #   JapanInfo::Japan.kusatsu_nearby_schedule
+    #   JapanInfo::Japan.kusatsu_nearby_schedule_reader(5)
+    # end
+  end
   end
 
 
