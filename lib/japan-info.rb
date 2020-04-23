@@ -37,36 +37,40 @@ module JapanInfo
         puts "#{@info}"
       end
 
-      # hours = spot.css(".spot_meta__content").children[2]
-      # closed = spot.css(".spot_meta__content").children[6]
-      # fee = spot.css(".spot_meta__content").children[8]
-      # @schedule << {:hours => hours, :closed  => closed, :fee => fee}
-
       def self.nearby_schedule(website,index)
         doc = website
-        @schedule = doc.css(".spot_meta__text_wrap").collect do |schedule|
-          schedule.text
+        @schedule = []
+         doc.css(".spot_meta__text_wrap").collect do |schedule|
+          split_schedule = schedule.text.gsub(/(?<=[a-z])(?=[A-Z])/, "\n")
+          number_split_schedule = split_schedule.gsub(/(?<=[0-9])(?=[A-Z])/, "\n")
+          @schedule << paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
         end
-        puts "#{@schedule[index]}"
-      end
-
-      def self.hash_info(website,index)
-        doc = website
         @info = doc.css(".spot_list__spot__desc").collect do |info|
           info.text
         end
+
+        # @new_schedule = []
+        # @schedule.each do |x|
+        #   @new_schedule << x.split(/[a..z][A..Z])
+        # end
+
+        puts "#{@schedule[index]}"
+        # puts "#{@new_schedule[index]}"
         puts "#{@info[index]}"
+
+
       end
+
+
 
       def self.spots(website)
         doc = website
         spots = doc.css(".spot_list__spot__name")
+
         @spots_array = spots.collect do |spot|
           spot.text
         end
-      end
 
-      def self.spots_reader
         counter = 1
           @spots_array.each do |spot|
             puts "#{counter}. #{spot}"
@@ -74,5 +78,5 @@ module JapanInfo
         end
       end
 
-end
+  end
 end
