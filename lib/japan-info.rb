@@ -39,19 +39,38 @@ module JapanInfo
 
       def self.nearby_schedule(website,index)
         doc = website
-
         @schedule = []
-         doc.css(".spot_meta__text_wrap").collect do |schedule|
-          split_schedule = schedule.text.gsub(/(?<=[a-z])(?=[A-Z])/, "\n")
-          number_split_schedule = split_schedule.gsub(/(?<=[0-9])(?=[A-Z])/, "\n")
-          @schedule << paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
+
+        doc.css(".spot_meta__text_wrap").collect do |schedule|
+          if doc.css(".spot_list__spot__desc").text.include?("Open") || doc.css(".spot_list__spot__desc").text.include?("Hours:")
+            split_schedule = schedule.text.gsub(/(?<=[a-z])(?=[A-Z])/, "\n")
+            number_split_schedule = split_schedule.gsub(/(?<=[0-9])(?=[A-Z])/, "\n")
+            @schedule << paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
+          else
+            noschedule = "no info avail"
+            @schedule << noschedule
+          end
         end
+        puts "#{@schedule[index]}"
+
+
+#         doc.css(".spot_list__spots").each do |schedule|
+#           if doc.css(".spot_list__spot__main_info").text.include?("Hours:")
+            # split_schedule = schedule.text.gsub(/(?<=[a-z])(?=[A-Z])/, "\n")
+            # number_split_schedule = split_schedule.gsub(/(?<=[0-9])(?=[A-Z])/, "\n")
+            # @schedule << paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
+#           else
+#             whats = "no info avail"
+#             @schedule << whats
+#           end
+#       end
+#       puts "#{@schedule}"
+# end
 
         @info = doc.css(".spot_list__spot__desc").collect do |info|
           info.text
         end
 
-        puts "#{@schedule[index]}"
         puts "#{@info[index]}"
       end
 
