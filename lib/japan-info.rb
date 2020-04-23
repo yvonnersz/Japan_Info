@@ -68,24 +68,20 @@ module JapanInfo
       def self.nearby_schedule(website,index)
         doc = website
         doc.css(".spot_meta__content").collect do |children|
-          @hash = {
-            :hours => doc.css(".spot_meta__content")[index].children[2].text,
-            :closed => doc.css(".spot_meta__content")[index].children[7].text,
-            :fee => doc.css(".spot_meta__content")[index].children[8].text
+            @hash_info = {
+            :hours => doc.css(".spot_meta__content").children[2].text,
+            :closed => doc.css(".spot_meta__content").children[6].text,
+            :fee => doc.css(".spot_meta__content").children[8].text
           }
         end
 
-        puts "#{@hash[:hours]}"
-        puts "#{@hash[:closed]}"
-        puts "#{@hash[:fee]}"
+        puts ""
+        puts "Here is the available information we found:"
+        puts ""
+        puts "#{@hash_info[:hours]}"
+        puts "#{@hash_info[:closed]}"
+        puts "#{@hash_info[:fee]}"
       end
-
-      # def self.nearby_schedule_reader(index)
-      #   puts "#{@hash[0]}"
-      #   puts "#{@hash[1]}"
-      #   puts "#{@hash[2]}"
-      #   binding.pry
-      # end
 
       def self.spots(website)
         doc = website
