@@ -65,22 +65,17 @@ module JapanInfo
         puts "#{@info}"
       end
 
+      # hours = spot.css(".spot_meta__content").children[2]
+      # closed = spot.css(".spot_meta__content").children[6]
+      # fee = spot.css(".spot_meta__content").children[8]
+      # @schedule << {:hours => hours, :closed  => closed, :fee => fee}
+
       def self.nearby_schedule(website,index)
         doc = website
-        doc.css(".spot_meta__content").collect do |children|
-            @hash_info = {
-            :hours => doc.css(".spot_meta__content").children[2].text,
-            :closed => doc.css(".spot_meta__content").children[6].text,
-            :fee => doc.css(".spot_meta__content").children[8].text,
-          }
+        @schedule = doc.css(".spot_meta__text_wrap").collect do |schedule|
+          schedule.text
         end
-
-        puts ""
-        puts "Here is the available information we found:"
-        puts ""
-        puts "#{@hash_info[:hours]}"
-        puts "#{@hash_info[:closed]}"
-        puts "#{@hash_info[:fee]}"
+        puts "#{@schedule[index]}"
       end
 
       def self.hash_info(website,index)

@@ -26,3 +26,6 @@ $ You picked " ".
 
 $ You picked " "
   Here is some additional info.
+
+#> troubles:
+  grabbing children from descriptive info. reiterating over the same block.
