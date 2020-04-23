@@ -71,7 +71,7 @@ module JapanInfo
             @hash_info = {
             :hours => doc.css(".spot_meta__content").children[2].text,
             :closed => doc.css(".spot_meta__content").children[6].text,
-            :fee => doc.css(".spot_meta__content").children[8].text
+            :fee => doc.css(".spot_meta__content").children[8].text,
           }
         end
 
@@ -81,6 +81,14 @@ module JapanInfo
         puts "#{@hash_info[:hours]}"
         puts "#{@hash_info[:closed]}"
         puts "#{@hash_info[:fee]}"
+      end
+
+      def self.hash_info(website,index)
+        doc = website
+        @info = doc.css(".spot_list__spot__desc").collect do |info|
+          info.text
+        end
+        puts "#{@info[index]}"
       end
 
       def self.spots(website)
