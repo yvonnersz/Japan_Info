@@ -44,12 +44,13 @@ module JapanInfo
     puts ""
     JapanInfo::Japan.info(scraper_webpage)
     puts ""
-    puts "Would you like to see more information of nearby community bath houses?"
+    puts "Would you like to see more information of nearby community bath houses or hotels?"
     JapanInfo::Japan.spots(scraper_webpage)
 
     choice = gets.strip
     case choice
     when "#{choice}"
+      puts ""
       puts "You chose #{choice}."
       JapanInfo::Japan.nearby_schedule(scraper_webpage,choice.to_i-1)
     end

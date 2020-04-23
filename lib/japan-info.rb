@@ -48,30 +48,16 @@ module JapanInfo
             number_split_schedule = split_schedule.gsub(/(?<=[0-9])(?=[A-Z])/, "\n")
             @schedule << paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
           else
-            noschedule = "no info avail"
-            @schedule << noschedule
+            no_schedule = "We could not find any information on shop hours."
+            @schedule << no_schedule
           end
         end
-        puts "#{@schedule[index]}"
-
-
-#         doc.css(".spot_list__spots").each do |schedule|
-#           if doc.css(".spot_list__spot__main_info").text.include?("Hours:")
-            # split_schedule = schedule.text.gsub(/(?<=[a-z])(?=[A-Z])/, "\n")
-            # number_split_schedule = split_schedule.gsub(/(?<=[0-9])(?=[A-Z])/, "\n")
-            # @schedule << paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
-#           else
-#             whats = "no info avail"
-#             @schedule << whats
-#           end
-#       end
-#       puts "#{@schedule}"
-# end
 
         @info = doc.css(".spot_list__spot__desc").collect do |info|
           info.text
         end
 
+        puts "#{@schedule[index]}"
         puts "#{@info[index]}"
       end
 
