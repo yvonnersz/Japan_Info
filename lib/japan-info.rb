@@ -39,29 +39,21 @@ module JapanInfo
 
       def self.nearby_schedule(website,index)
         doc = website
+
         @schedule = []
          doc.css(".spot_meta__text_wrap").collect do |schedule|
           split_schedule = schedule.text.gsub(/(?<=[a-z])(?=[A-Z])/, "\n")
           number_split_schedule = split_schedule.gsub(/(?<=[0-9])(?=[A-Z])/, "\n")
           @schedule << paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
         end
+
         @info = doc.css(".spot_list__spot__desc").collect do |info|
           info.text
         end
 
-        # @new_schedule = []
-        # @schedule.each do |x|
-        #   @new_schedule << x.split(/[a..z][A..Z])
-        # end
-
         puts "#{@schedule[index]}"
-        # puts "#{@new_schedule[index]}"
         puts "#{@info[index]}"
-
-
       end
-
-
 
       def self.spots(website)
         doc = website
