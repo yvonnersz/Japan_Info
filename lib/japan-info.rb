@@ -41,8 +41,9 @@ module JapanInfo
         doc = website
         @schedule = []
 
-        doc.css(".spot_meta__text_wrap").collect do |schedule|
-          if doc.css(".spot_list__spot__desc").text.include?("Open") || doc.css(".spot_list__spot__desc").text.include?("Hours:")
+        doc.css(".spot_list__spot__main_info").collect do |bio|
+          if bio.text.include?("Open") || bio.text.include?("Hours:")
+            schedule = bio.css(".spot_meta__text_wrap")
             split_schedule = schedule.text.gsub(/(?<=[a-z])(?=[A-Z])/, "\n")
             number_split_schedule = split_schedule.gsub(/(?<=[0-9])(?=[A-Z])/, "\n")
             @schedule << paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
