@@ -5,7 +5,7 @@ module JapanInfo
       puts "Welcome to JapanInfo! I will be your travel guide today."
       puts "Which onsens are you most curious about in the Kanto region (nearby Tokyo)?"
       puts "Please input a number."
-      sleep 3
+      sleep 2
       puts ""
       options
     end
@@ -46,14 +46,35 @@ module JapanInfo
       options
     end
 
+    def goodbye
+      puts ""
+      puts "Goodbye!"
+      exit
+    end
+
 
     def pick(scraper_webpage)
       puts ""
       JapanInfo::Japan.info(scraper_webpage)
       puts ""
       puts "Would you like to see more information of similar nearby spots and/or hotels?"
-      JapanInfo::Japan.spots(scraper_webpage)
+      puts "Please input Y/N."
+      choice = gets.strip
 
+      case choice
+      when "y"
+        more_info(scraper_webpage)
+      when "n"
+        goodbye
+      end
+    end
+
+
+
+    def more_info(scraper_webpage)
+      puts ""
+      puts "Please input a number."
+      JapanInfo::Japan.spots(scraper_webpage)
       puts ""
       choice = gets.strip
       case choice
@@ -62,6 +83,17 @@ module JapanInfo
         puts "You chose #{choice}."
         puts ""
         JapanInfo::Japan.nearby_schedule(scraper_webpage,choice.to_i-1)
+      end
+
+      puts ""
+      puts ""
+      puts "Would you like to go back and check out other spots?"
+      choicetwo = gets.strip
+      case choicetwo
+      when "y"
+        more_info(scraper_webpage)
+      when "n"
+        goodbye
       end
     end
 
