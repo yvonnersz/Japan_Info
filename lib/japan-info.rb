@@ -21,9 +21,7 @@ module JapanInfo
         @kanto_array = kanto.collect do |kanto|
           kanto.text
         end
-      end
 
-      def self.kanto_reader
         counter = 1
           @kanto_array[0..9].each do |region|
             puts "#{counter}. #{region}"
