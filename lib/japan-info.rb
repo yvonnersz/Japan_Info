@@ -14,29 +14,31 @@ require 'pry'
 
 module JapanInfo
   class Japan
-      attr_accessor :name, :position, :location, :url, :head_chef, :website_url, :food_style, :best_dish, :contact, :description
+      attr_accessor :name, :description, :url, :head_chef
 
       @@all = []
 
       def self.new_from_index_page(r)
         self.new(
-          r.css("h1.spot_list__spot__name").text,
-          "https://www.japan-guide.com#{r.css(".spot_list__spot__main_info a").attribute("href")}",
-          r.css("div.spot_list__spot__desc").text,
-          r.css(".position").text
+          r.css(".spot_list__spot__name").text,
+          "https://www.japan-guide.com#{r.css(".spot_list__spot__main_info a").attribute("href").value}",
+          r.css("div.spot_list__spot__desc").text
           )
       end
 
-      def initialize(name=nil, url=nil, location=nil, position=nil)
+      def initialize(name=nil, url=nil, description=nil)
         @name = name
         @url = url
-        @location = location
-        @position = position
+        @description = description
         @@all << self
       end
 
       def self.all
         @@all
+      end
+
+      def doc
+        @doc = Nokogiri::HTML(open(self.url))
       end
 
 
