@@ -1,101 +1,67 @@
 module JapanInfo
   class CLI
 
-    def start
-      puts "Welcome to JapanInfo! I will be your travel guide today."
-      puts "Which onsens are you most curious about in the Kanto region (nearby Tokyo)?"
-      puts "Please input a number."
-      sleep 2
-      puts ""
-      options
-    end
+    def call
+       WorldsBestRestaurants::Scraper.new.make_onsens
+       puts "Welcome to the 50 Best Restaurants in the World"
+       start
+     end
 
-    def options
-      JapanInfo::Japan.kanto
-      puts ""
-      choice = gets.strip
-      case choice
-      when "1"
-        pick(JapanInfo::Scraper.kusatsu_page)
-      when "2"
-        pick(JapanInfo::Scraper.manza_page)
-      when "3"
-        pick(JapanInfo::Scraper.hakone_page)
-      when "4"
-        pick(JapanInfo::Scraper.minakami_page)
-      when "5"
-        pick(JapanInfo::Scraper.nasu_page)
-      when "6"
-        pick(JapanInfo::Scraper.nikko_page)
-      when "7"
-        pick(JapanInfo::Scraper.ikaho_page)
-      when "8"
-        pick(JapanInfo::Scraper.kinugawa_page)
-      when "9"
-        pick(JapanInfo::Scraper.shiobara_page)
-      when "10"
-        pick(JapanInfo::Scraper.shima_page)
-      else
-        invalid_number
-      end
-    end
+     def start
+       puts ""
+       puts "What number restaurants would you like to see? 1-10, 11-20, 21-30, 31-40 or 41-50?"
+       input = gets.strip.to_i
 
-    def invalid_number
-      puts "Please enter a valid number."
-      puts ""
-      options
-    end
+       print_restaurants(input)
 
-    def goodbye
-      puts ""
-      puts "Goodbye!"
-      exit
-    end
+       puts ""
+       puts "What restaurant would you like more information on?"
+       input = gets.strip
 
+       restaurant = WorldsBestRestaurants::Restaurant.find(input.to_i)
 
-    def pick(scraper_webpage)
-      puts ""
-      JapanInfo::Japan.info(scraper_webpage)
-      puts ""
-      puts "Would you like to see more information of similar nearby spots and/or hotels?"
-      puts "Please input Y/N."
-      choice = gets.strip
+       print_restaurant(restaurant)
 
-      case choice
-      when "y"
-        more_info(scraper_webpage)
-      when "n"
-        goodbye
-      end
-    end
+       puts ""
+       puts "Would you like to see another restaurant? Enter Y or N"
+
+       input = gets.strip.downcase
+       if input == "y"
+         start
+       else
+         puts ""
+         puts "Thankyou! Have a great day!"
+         exit
+       end
+     end
+
+     def print_restaurant(restaurant)
+       puts ""
+       puts "----------- #{restaurant.name} - #{restaurant.position} -----------"
+       puts ""
+       puts "Location:           #{restaurant.location}"
+       puts "Head Chef:          #{restaurant.head_chef}"
+       puts "Style of Food:      #{restaurant.food_style}"
+       puts "Standout Dish:      #{restaurant.best_dish}"
+       puts "Contact:            #{restaurant.contact}"
+       puts "Website:            #{restaurant.website_url}"
+       puts ""
+       puts "---------------Description--------------"
+       puts ""
+       puts "#{restaurant.description}"
+       puts ""
+     end
+
+     def print_restaurants(from_number)
+       puts ""
+       puts "---------- Restaurants #{from_number} - #{from_number+9} ----------"
+       puts ""
+       WorldsBestRestaurants::Restaurant.all[from_number-1, 10].each.with_index(from_number) do |restaurant, index|
+         puts "#{index}. #{restaurant.name} - #{restaurant.location}"
+       end
+     end
 
 
-
-    def more_info(scraper_webpage)
-      puts ""
-      puts "Please input a number."
-      JapanInfo::Japan.spots(scraper_webpage)
-      puts ""
-      choice = gets.strip
-      case choice
-      when "#{choice}"
-        puts ""
-        puts "You chose #{choice}."
-        puts ""
-        JapanInfo::Japan.nearby_schedule(scraper_webpage,choice.to_i-1)
-      end
-
-      puts ""
-      puts ""
-      puts "Would you like to go back and check out other spots?"
-      choicetwo = gets.strip
-      case choicetwo
-      when "y"
-        more_info(scraper_webpage)
-      when "n"
-        goodbye
-      end
-    end
 
 end
 end
