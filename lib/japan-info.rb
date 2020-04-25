@@ -14,10 +14,9 @@ require 'pry'
 
 module JapanInfo
   class Japan
-      attr_accessor :name, :description, :url, :region
+      attr_accessor :name, :description, :url, :region, :spots
 
       @@all = []
-      @@regions = []
 
       def self.new_from_index_page(r)
         self.new(
@@ -38,14 +37,17 @@ module JapanInfo
         @@all
       end
 
-      def self.find(id)
-        self.all[id-1]
+      def self.find(input)
+        self.all[input.to_i-1]
       end
 
       def doc
         @doc = Nokogiri::HTML(open(self.url))
       end
 
+      def spots
+        @spots = doc.css(".spot_list__spot__name").text
+     end
 
   end
 end

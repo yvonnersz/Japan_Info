@@ -6,7 +6,7 @@ module JapanInfo
      JapanInfo::Scraper.new.make_onsens
      puts ""
      puts "Hi! Welcome to JapanInfo. I will be your tour guide today."
-     puts "Which onsen are you most interested in the Kanto region (Tokyo)?"
+     puts "Which onsen in the Kanto region would you like a description on?"
      puts ""
      kanto_onsens
 
@@ -14,9 +14,19 @@ module JapanInfo
      input = gets.strip
      index = input.to_i - 1
      description(index)
+     onsen = JapanInfo::Japan.find(input)
      puts ""
 
-     puts "Would you like to see more info on nearby spots and hotels?"
+     puts "Would you like to see more info on nearby spots and hotels? y/n"
+     input2 = gets.strip
+     case input2
+     when "y"
+       puts "list of spots"
+       print_spots(onsen)
+     when "n"
+       puts "Goodbye!"
+       exit
+     end
    end
 
    def kanto_onsens
@@ -33,6 +43,10 @@ module JapanInfo
      puts "#{JapanInfo::Japan.all[index].description}"
    end
 
+   def print_spots(onsen)
+     puts "---------------Nearby Spots ------------------"
+     puts "#{onsen.spots}"
+   end
 
 
 end
