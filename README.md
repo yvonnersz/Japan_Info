@@ -1,6 +1,6 @@
 # JapanInfo
 
-Greetings! This gem will provide information of nearby onsen spots in the Kanto region based on the cities you are interested in.
+This gem will provide information of nearby onsen spots in the Kanto region based on the cities you are interested in.
 
 ## Installation
 
