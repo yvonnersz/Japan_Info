@@ -7,16 +7,8 @@ module JapanInfo
      puts "Hi! Welcome to JapanInfo. I will be your tour guide today."
      puts "Which region are you most interested in?"
      puts ""
-     regions
+     kanto_onsens
      input = gets.strip
-   end
-
-   def regions
-     counter = 1
-     JapanInfo::Japan.regions.each do |region|
-       puts "#{counter}.         #{region}"
-       counter +=1
-     end
    end
 
    def kanto_onsens

@@ -34,13 +34,6 @@ module JapanInfo
         @@all << self
       end
 
-      def self.regions
-        region_doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e2292.html"))
-        region_doc.css(".page_section__body h3").children[0..6].each do |region|
-          @@regions << region.text
-        end
-      end
-
       def self.all
         @@all
       end
