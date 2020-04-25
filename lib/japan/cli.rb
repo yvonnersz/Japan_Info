@@ -24,6 +24,10 @@ module JapanInfo
        print_spots(city)
        puts ""
        puts "Please input the number in which onsen you would like more info on."
+
+       input=gets.strip
+       print_hours(city, input)
+
      when "n"
        puts "Goodbye!"
        exit
@@ -51,6 +55,13 @@ module JapanInfo
        counter +=1
      end
    end
+
+   def print_hours(city, input)
+     puts ""
+     puts "---------------#{city.spots[input.to_i-1]}---------------------------"
+     puts "#{city.hours[input.to_i-1]}"
+   end
+
 
 
 end
