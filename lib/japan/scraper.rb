@@ -7,7 +7,6 @@ require 'pry'
 module JapanInfo
   class Scraper
 
-
       def get_page
         Nokogiri::HTML(open("https://www.japan-guide.com/e/e2292.html"))
       end

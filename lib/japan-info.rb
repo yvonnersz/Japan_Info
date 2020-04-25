@@ -14,7 +14,7 @@ require 'pry'
 
 module JapanInfo
   class Japan
-      attr_accessor :name, :description, :url, :head_chef
+      attr_accessor :name, :description, :url
 
       @@all = []
 
@@ -35,6 +35,10 @@ module JapanInfo
 
       def self.all
         @@all
+      end
+
+      def self.find(id)
+        self.all[id-1]
       end
 
       def doc
