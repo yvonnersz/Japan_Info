@@ -67,5 +67,11 @@ module JapanInfo
         @schedule
       end
 
+      def info
+        @info = doc.css(".spot_list__spot__desc").collect do |info|
+          info.text
+        end
+      end
+
   end
 end

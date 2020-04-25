@@ -60,6 +60,9 @@ module JapanInfo
      puts ""
      puts "---------------#{city.spots[input.to_i-1]}---------------------------"
      puts "#{city.hours[input.to_i-1]}"
+     puts ""
+     puts "---------------------Description ------------------------------------"
+     puts "#{city.info[input.to_i-1]}"
    end
 
 
