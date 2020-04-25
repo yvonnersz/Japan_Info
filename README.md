@@ -1,8 +1,6 @@
 # JapanInfo
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/Japan_Info`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Greetings! This gem will provide information of nearby onsen spots in the Kanto region based on the cities you are interested in.
 
 ## Installation
 
