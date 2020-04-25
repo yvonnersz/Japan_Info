@@ -12,7 +12,7 @@ gem 'Japan_Info'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Greetings! This gem will provide information of nearby onsen spots in the Kanto region based on the cities you are interested in.
 
 ## Development
 
