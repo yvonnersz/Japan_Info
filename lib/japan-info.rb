@@ -14,19 +14,21 @@ require 'pry'
 
 module JapanInfo
   class Japan
-      attr_accessor :name, :description, :url
+      attr_accessor :name, :description, :url, :region
 
       @@all = []
 
       def self.new_from_index_page(r)
         self.new(
+          r.css(".page_section__body h3").text,
           r.css(".spot_list__spot__name").text,
           "https://www.japan-guide.com#{r.css(".spot_list__spot__main_info a").attribute("href").value}",
           r.css("div.spot_list__spot__desc").text
           )
       end
 
-      def initialize(name=nil, url=nil, description=nil)
+      def initialize(region=nil, name=nil, url=nil, description=nil)
+        @region = region
         @name = name
         @url = url
         @description = description
