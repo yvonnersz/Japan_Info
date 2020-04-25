@@ -46,8 +46,10 @@ module JapanInfo
       end
 
       def spots
-        @spots = doc.css(".spot_list__spot__name").text
-     end
+        @spots = doc.css(".spot_list__spot__name").collect do |spot|
+          spot.text
+        end
+      end
 
   end
 end

@@ -14,15 +14,16 @@ module JapanInfo
      input = gets.strip
      index = input.to_i - 1
      description(index)
-     onsen = JapanInfo::Japan.find(input)
+     city = JapanInfo::Japan.find(input)
      puts ""
 
      puts "Would you like to see more info on nearby spots and hotels? y/n"
      input2 = gets.strip
      case input2
      when "y"
-       puts "list of spots"
-       print_spots(onsen)
+       print_spots(city)
+       puts ""
+       puts "Please input the number in which onsen you would like more info on."
      when "n"
        puts "Goodbye!"
        exit
@@ -43,9 +44,12 @@ module JapanInfo
      puts "#{JapanInfo::Japan.all[index].description}"
    end
 
-   def print_spots(onsen)
-     puts "---------------Nearby Spots ------------------"
-     puts "#{onsen.spots}"
+   def print_spots(city)
+     counter = 1
+     city.spots.each do |place|
+       puts "#{counter}.    #{place}"
+       counter +=1
+     end
    end
 
 
