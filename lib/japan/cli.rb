@@ -18,13 +18,13 @@ module JapanInfo
 
      city = JapanInfo::Japan.find(input)
      puts ""
-     print_spots(JapanInfo::Japan.find(input))
+     print_spots(city)
 
      puts ""
      puts "Please input the number in which onsen you would like more info on."
 
      input=gets.strip
-     print_hours(JapanInfo::Japan.find(input),input)
+     print_hours(city,input)
    end
 
    def print_cities
@@ -53,7 +53,7 @@ module JapanInfo
 
    def print_hours(city, input)
      puts ""
-     puts "---------------#{city.spots[input.to_i-1]}---------------------------"
+     puts "-------------#{city.spots[input.to_i-1]}-------------"
      puts "#{city.hours[input.to_i-1]}"
      puts ""
      puts "#{city.info[input.to_i-1]}"
