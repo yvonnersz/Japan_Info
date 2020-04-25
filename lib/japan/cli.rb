@@ -7,6 +7,7 @@ module JapanInfo
      puts ""
      puts "Hi! Welcome to JapanInfo. I will be your tour guide today."
      puts "Which city in the Kanto region would you like a description on?"
+     puts "Please input a number."
      puts ""
      print_cities
      cities
@@ -25,6 +26,17 @@ module JapanInfo
 
      input=gets.strip
      print_hours(city,input)
+
+     puts ""
+     puts "Would you like to keep browsing? (y/n)"
+     input = gets.strip
+     case input.downcase
+     when "y"
+       start
+     when "n"
+       puts "Goodbye!"
+       exit
+     end
    end
 
    def print_cities
