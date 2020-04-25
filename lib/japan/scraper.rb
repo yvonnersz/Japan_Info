@@ -9,9 +9,9 @@ module JapanInfo
       Nokogiri::HTML(open("https://www.japan-guide.com/e/e2292.html"))
     end
 
-    def make_onsens
-      get_page.css(".spot_list__spot").each do |r|
-        JapanInfo::Japan.new_from_index_page(r)
+    def make_cities
+      get_page.css(".spot_list__spot").each do |city|
+        JapanInfo::Japan.new_from_index_page(city)
       end
     end
 

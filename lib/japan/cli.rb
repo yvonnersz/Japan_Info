@@ -3,38 +3,31 @@ module JapanInfo
   class CLI
 
    def start
-     JapanInfo::Scraper.new.make_onsens
+     JapanInfo::Scraper.new.make_cities
      puts ""
      puts "Hi! Welcome to JapanInfo. I will be your tour guide today."
-     puts "Which onsen in the Kanto region would you like a description on?"
+     puts "Which city in the Kanto region would you like a description on?"
      puts ""
-     kanto_onsens
-
-     puts ""
-     input = gets.strip
-     index = input.to_i - 1
-     description(index)
-     city = JapanInfo::Japan.find(input)
-     puts ""
-
-     puts "Would you like to see more info on nearby spots and hotels? y/n"
-     input2 = gets.strip
-     case input2
-     when "y"
-       print_spots(city)
-       puts ""
-       puts "Please input the number in which onsen you would like more info on."
-
-       input=gets.strip
-       print_hours(city, input)
-
-     when "n"
-       puts "Goodbye!"
-       exit
-     end
+     print_cities
+     cities
    end
 
-   def kanto_onsens
+  def cities
+     input = gets.strip
+     print_description(input)
+
+     city = JapanInfo::Japan.find(input)
+     puts ""
+     print_spots(JapanInfo::Japan.find(input))
+
+     puts ""
+     puts "Please input the number in which onsen you would like more info on."
+
+     input=gets.strip
+     print_hours(JapanInfo::Japan.find(input),input)
+   end
+
+   def print_cities
      counter = 1
      JapanInfo::Japan.all[0..9].each do |onsen|
        puts "#{counter}.    #{onsen.name}"
@@ -42,10 +35,12 @@ module JapanInfo
      end
    end
 
-   def description(index)
+   def print_description(input)
      puts ""
-     puts "---------------#{JapanInfo::Japan.all[index].name}---------------------------"
-     puts "#{JapanInfo::Japan.all[index].description}"
+     puts "-------------#{JapanInfo::Japan.all[input.to_i-1].name}-------------"
+     puts "#{JapanInfo::Japan.all[input.to_i-1].description}"
+     puts ""
+     puts "Here are similar nearby spots and/or hotels:"
    end
 
    def print_spots(city)
@@ -61,14 +56,9 @@ module JapanInfo
      puts "---------------#{city.spots[input.to_i-1]}---------------------------"
      puts "#{city.hours[input.to_i-1]}"
      puts ""
-     puts "---------------------Description ------------------------------------"
      puts "#{city.info[input.to_i-1]}"
+     puts ""
    end
 
-
-
+ end
 end
-end
-
-#regions/prefectures - hokkaido, kanto
-#cities - tokyo, hakone

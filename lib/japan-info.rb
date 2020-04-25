@@ -18,11 +18,11 @@ module JapanInfo
 
       @@all = []
 
-      def self.new_from_index_page(r)
+      def self.new_from_index_page(city)
         self.new(
-          r.css(".spot_list__spot__name").text,
-          "https://www.japan-guide.com#{r.css(".spot_list__spot__main_info a").attribute("href").value}",
-          r.css("div.spot_list__spot__desc").text
+          city.css(".spot_list__spot__name").text,
+          "https://www.japan-guide.com#{city.css(".spot_list__spot__main_info a").attribute("href").value}",
+          city.css("div.spot_list__spot__desc").text
           )
       end
 
