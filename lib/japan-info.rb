@@ -17,22 +17,28 @@ module JapanInfo
       attr_accessor :name, :description, :url, :region
 
       @@all = []
+      @@regions = []
 
       def self.new_from_index_page(r)
         self.new(
-          r.css(".page_section__body h3").text,
           r.css(".spot_list__spot__name").text,
           "https://www.japan-guide.com#{r.css(".spot_list__spot__main_info a").attribute("href").value}",
           r.css("div.spot_list__spot__desc").text
           )
       end
 
-      def initialize(region=nil, name=nil, url=nil, description=nil)
-        @region = region
+      def initialize(name=nil, url=nil, description=nil)
         @name = name
         @url = url
         @description = description
         @@all << self
+      end
+
+      def self.regions
+        region_doc = Nokogiri::HTML(open("https://www.japan-guide.com/e/e2292.html"))
+        region_doc.css(".page_section__body h3").children[0..6].each do |region|
+          @@regions << region.text
+        end
       end
 
       def self.all

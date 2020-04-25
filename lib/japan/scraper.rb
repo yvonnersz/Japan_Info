@@ -12,7 +12,7 @@ module JapanInfo
       end
 
       def scrape_onsens_index
-        self.get_page.css(".spot_list__spot")
+        self.get_page.css(".spot_list__spots")
       end
 
       def make_onsens
