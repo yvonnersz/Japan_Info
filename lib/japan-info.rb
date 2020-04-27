@@ -49,19 +49,16 @@ module JapanInfo
     end
 
     def hours
-      @schedule = []
-      doc.css(".spot_list__spot__main_info").collect do |bio|
+      @schedule = doc.css(".spot_list__spot__main_info").collect do |bio|
         if bio.text.include?("Open") || bio.text.include?("Hours:")
           schedule = bio.css(".spot_meta__text_wrap")
           split_schedule = schedule.text.gsub(/(?<=[a-z])(?=[A-Z])/, "\n")
           number_split_schedule = split_schedule.gsub(/(?<=[0-9])(?=[A-Z])/, "\n")
-          @schedule << paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
+          paranthesis_split = number_split_schedule.gsub(/(?<=[)])(?=[A-Z])/, "\n")
         else
           no_schedule = "We could not find any information on shop hours."
-          @schedule << no_schedule
         end
       end
-      @schedule
     end
 
     def info
