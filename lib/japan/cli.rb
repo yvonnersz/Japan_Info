@@ -40,11 +40,7 @@ module JapanInfo
    end
 
    def print_cities
-     counter = 1
-     JapanInfo::Japan.all[0..9].each do |onsen|
-       puts "#{counter}.    #{onsen.name}"
-       counter +=1
-     end
+     JapanInfo::Japan.all[0..9].each_with_index {|onsen, i| puts "#{i+1}.  #{onsen.name}"}
    end
 
    def print_description(input)
@@ -56,11 +52,7 @@ module JapanInfo
    end
 
    def print_spots(city)
-     counter = 1
-     city.spots.each do |place|
-       puts "#{counter}.    #{place}"
-       counter +=1
-     end
+     city.spots.each_with_index {|place,i| puts "#{i+1}.  #{place}"}
    end
 
    def print_hours(city, input)
