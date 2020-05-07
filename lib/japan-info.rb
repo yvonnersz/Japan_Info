@@ -14,7 +14,7 @@ require 'pry'
 
 module JapanInfo
   class Japan
-    attr_accessor :name, :description, :url, :region, :spots
+    attr_accessor :name, :description, :url, :spots
     @@all = []
 
     def self.new_from_index_page(city)
