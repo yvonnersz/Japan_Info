@@ -40,7 +40,7 @@ module JapanInfo
    end
 
    def print_cities
-     JapanInfo::Japan.all[0..9].each_with_index {|onsen, i| puts "#{i+1}.  #{onsen.name}"}
+     JapanInfo::Japan.all.each_with_index {|onsen, i| puts "#{i+1}.  #{onsen.name}"}
    end
 
    def print_description(input)
