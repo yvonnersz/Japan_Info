@@ -9,14 +9,26 @@ module JapanInfo
      puts "Which city in the Kanto region would you like a description on?"
      puts "Please input a number."
      puts ""
+
      print_cities
      cities
    end
 
-  def cities
-     input = gets.strip
-     print_description(input)
+   def cities
+     city_input = gets.strip
+     case city_input.to_i <= print_cities.size
+     when true
+       print_description(city_input)
+     when false
+       puts "Please enter a valid number."
+       puts ""
+       sleep 1
+       print_cities
+       cities
+     end
+   end
 
+   def description
      city = JapanInfo::Japan.find(input)
      puts ""
      print_spots(city)
@@ -40,15 +52,16 @@ module JapanInfo
    end
 
    def print_cities
-     JapanInfo::Japan.all.each_with_index {|onsen, i| puts "#{i+1}.  #{onsen.name}"}
+     JapanInfo::Japan.all.each_with_index do |onsen, i|
+       puts "#{i+1}.  #{onsen.name.gsub(/([•])/,'')}"
+     end
    end
 
    def print_description(input)
      puts ""
-     puts "-------------#{JapanInfo::Japan.all[input.to_i-1].name}-------------"
+     puts "-------------#{JapanInfo::Japan.all[input.to_i-1].name.gsub(/([•])/,'')}-------------"
      puts "#{JapanInfo::Japan.all[input.to_i-1].description}"
      puts ""
-     puts "Here are similar nearby spots and/or hotels:"
    end
 
    def print_spots(city)
