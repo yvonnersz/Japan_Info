@@ -67,14 +67,13 @@ module JapanInfo
      end
    end
 
-
    def print_spots(city)
      city.spots.collect.with_index(1) {|city,i| puts "#{i}.  #{city}"}
    end
-#
+
    def print_hours(city, spots_input)
      puts ""
-     puts "-------------#{city.spots[spots_input.to_i-1]}-------------"
+     puts "---------------------------------------#{city.spots[spots_input.to_i-1]}---------------------------------------"
      puts "#{city.hours[spots_input.to_i-1]}"
      puts ""
      puts "#{city.info[spots_input.to_i-1]}"
@@ -89,7 +88,7 @@ module JapanInfo
 
    def print_description(city_input)
      puts ""
-     puts "-------------#{JapanInfo::Japan.all[city_input.to_i-1].name.gsub(/([•])/,'')}-------------"
+     puts "---------------------------------------#{JapanInfo::Japan.all[city_input.to_i-1].name.gsub(/([•])/,'')}---------------------------------------"
      puts "#{JapanInfo::Japan.all[city_input.to_i-1].description}"
      puts ""
    end
