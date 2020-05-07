@@ -31,7 +31,7 @@ module JapanInfo
        puts "Here are the popular nearby onsen spots/hotels."
        puts "Which would you like more information on?"
 
-       @city = JapanInfo::Japan.find(city_input)
+       @city = JapanInfo::Japan.find(city_input) #this line returns the object of @@all
        print_spots(@city)
        cli_spots
      end
@@ -68,7 +68,7 @@ module JapanInfo
    end
 
    def print_spots(city)
-     city.spots.collect.with_index(1) {|city,i| puts "#{i}.  #{city.gsub(/([•])/,'')}"}
+     city.spots.collect.with_index(1) {|spots,i| puts "#{i}.  #{spots.gsub(/([•])/,'')}"}
    end
 
    def print_hours(city, spots_input)
@@ -88,7 +88,7 @@ module JapanInfo
 
    def print_description(city_input)
      puts ""
-     puts "--------------------------------------- #{JapanInfo::Japan.all[city_input.to_i-1].name.gsub(/([•])/,'')} ---------------------------------------"
+     puts "--------------------------------------- #{JapanInfo::Japan.all[city_input.to_i-1].name.gsub(/([•])/,'').gsub("Onsen",'')} ---------------------------------------"
      puts "#{JapanInfo::Japan.all[city_input.to_i-1].description}"
      puts ""
    end
