@@ -82,7 +82,7 @@ module JapanInfo
 
    def print_cities
      JapanInfo::Japan.all.each_with_index do |city, i|
-       puts "#{i+1}.  #{city.name.gsub(/([•])/,'')}"
+       puts "#{i+1}.  #{city.name.gsub(/([•])/,'').gsub("Onsen",'')}"
      end
    end
 

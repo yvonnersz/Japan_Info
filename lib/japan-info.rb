@@ -14,14 +14,14 @@ require 'pry'
 
 module JapanInfo
   class Japan
-    attr_accessor :name, :description, :url, :spots
+    attr_accessor :name, :description, :url
     @@all = []
 
     def self.new_from_index_page(city)
       self.new(
-        city.css(".spot_list__spot__name").text,
-        "https://www.japan-guide.com#{city.css(".spot_list__spot__main_info a").attribute("href").value}",
-        city.css("div.spot_list__spot__desc").text
+        city.css(".spot_list__spot__name").text, #city name
+        "https://www.japan-guide.com#{city.css(".spot_list__spot__main_info a").attribute("href").value}", #url
+        city.css("div.spot_list__spot__desc").text #description of city
         )
     end
 
