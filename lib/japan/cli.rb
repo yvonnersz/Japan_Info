@@ -14,18 +14,32 @@ module JapanInfo
      cities
    end
 
+   def print_cities
+     JapanInfo::Japan.all.each_with_index do |onsen, i|
+       puts "#{i+1}.  #{onsen.name.gsub(/([•])/,'')}"
+     end
+   end
+
    def cities
      city_input = gets.strip
      case city_input.to_i <= print_cities.size
-     when true
-       print_description(city_input)
      when false
+       puts ""
        puts "Please enter a valid number."
        puts ""
        sleep 1
        print_cities
        cities
+     when true
+       print_description(city_input)
      end
+   end
+
+   def print_description(input)
+     puts ""
+     puts "-------------#{JapanInfo::Japan.all[input.to_i-1].name.gsub(/([•])/,'')}-------------"
+     puts "#{JapanInfo::Japan.all[input.to_i-1].description}"
+     puts ""
    end
 
    def description
@@ -51,18 +65,9 @@ module JapanInfo
      end
    end
 
-   def print_cities
-     JapanInfo::Japan.all.each_with_index do |onsen, i|
-       puts "#{i+1}.  #{onsen.name.gsub(/([•])/,'')}"
-     end
-   end
 
-   def print_description(input)
-     puts ""
-     puts "-------------#{JapanInfo::Japan.all[input.to_i-1].name.gsub(/([•])/,'')}-------------"
-     puts "#{JapanInfo::Japan.all[input.to_i-1].description}"
-     puts ""
-   end
+
+
 
    def print_spots(city)
      city.spots.each_with_index {|place,i| puts "#{i+1}.  #{place}"}
