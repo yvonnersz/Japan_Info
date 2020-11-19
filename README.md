@@ -1,4 +1,4 @@
-![ScreenShot](https://github.com/yvonnersz/japan-info/blob/master/japan-info-demo.png)
+![ScreenShot](https://github.com/yvonnersz/japan-info/blob/master/japan-info-demo.jpg)
 
 # Installation
 
